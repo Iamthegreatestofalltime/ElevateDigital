@@ -26,7 +26,7 @@ export default function InfoAbout() {
           <div className="mb-4">
             <Image src="https://assets-global.website-files.com/5837424ae11409586f837994/65de82a7bf5974f6e26a0cc6_Frame%202349.png" alt="Image 5" width={300} height={300} className="rounded-lg" />
           </div>
-          <p className="text-sm">We&apos;ll revise the designs until you're 100% satisfied.</p>
+          <p className="text-sm">We&apos;ll revise the designs until you&apos;re 100% satisfied.</p>
         </div>
       </div>
       <div className="text-center mt-10">
