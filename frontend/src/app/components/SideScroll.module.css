@@ -9,13 +9,12 @@
 .sideScrollContent {
   display: flex;
   will-change: transform;
-  transition: transform 0.01s ease-out;
 }
 
 .scrollImage {
   width: 400px; /* Adjust the width of each image as needed */
   height: auto; /* Maintain aspect ratio */
-  margin-right: 20px; /* Adjust the spacing between images as needed */
+  margin-right: 20px; /* Adjust the spacing b etween images as needed */
   border-radius: 10px;
 }
 
