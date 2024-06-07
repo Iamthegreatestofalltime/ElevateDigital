@@ -14,7 +14,7 @@ export default function InfoAbout() {
           <div className="mb-4">
             <Image src="https://assets-global.website-files.com/5837424ae11409586f837994/65de9d1cea9fe43024b32476_Frame%202341.png" alt="Image 2" width={300} height={300} className="rounded-lg" />
           </div>
-          <p className="text-sm">Subscribe to a plan & request as many designs as you’d like.</p>
+          <p className="text-sm">Subscribe to a plan & request as many designs as you&apos;d like.</p>
         </div>
         <div className="flex flex-col items-center text-center">
           <div className="mb-4">
@@ -26,7 +26,7 @@ export default function InfoAbout() {
           <div className="mb-4">
             <Image src="https://assets-global.website-files.com/5837424ae11409586f837994/65de82a7bf5974f6e26a0cc6_Frame%202349.png" alt="Image 5" width={300} height={300} className="rounded-lg" />
           </div>
-          <p className="text-sm">We'll revise the designs until you're 100% satisfied.</p>
+          <p className="text-sm">We&apos;ll revise the designs until you're 100% satisfied.</p>
         </div>
       </div>
       <div className="text-center mt-10">

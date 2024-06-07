@@ -16,7 +16,7 @@ export default function Testimonial() {
                 </div>
                 <div className="flex flex-col md:flex-row items-center justify-center flex-wrap gap-8 mt-8 w-full px-4">
                     <div className="p-2 testimonial max-w-[120vh] sm:w-[40vh] md:w-[60vh]">
-                        <p>Working with Alex was a fantastic experience. He developed a custom AI Task Manager App for our team, which has dramatically improved our productivity. Alex's attention to detail and ability to deliver exactly what we needed were exceptional.</p>
+                        <p>Working with Alex was a fantastic experience. He developed a custom AI Task Manager App for our team, which has dramatically improved our productivity. Alex&apos;s attention to detail and ability to deliver exactly what we needed were exceptional.</p>
                     </div>
                 </div>
                 <style jsx>{`

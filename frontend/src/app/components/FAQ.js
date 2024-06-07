@@ -56,7 +56,7 @@ export default function FAQ() {
                     </button>
                     {openIndex === 2 && (
                         <p className="faq-answer mb-4">
-                            The cost of a new website varies based on the project's scope and features. Our basic packages start at 250 USD.
+                            The cost of a new website varies based on the project&apos;s scope and features. Our basic packages start at 250 USD.
                         </p>
                     )}
                 </div>
