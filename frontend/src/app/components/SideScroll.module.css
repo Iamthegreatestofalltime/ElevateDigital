@@ -9,7 +9,7 @@
 .sideScrollContent {
   display: flex;
   will-change: transform;
-  transition: transform 0.08s ease-out;
+  transition: transform 0.01s ease-out;
 }
 
 .scrollImage {

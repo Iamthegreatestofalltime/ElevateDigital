@@ -9,12 +9,19 @@ import Food from '../../../public/Food.png';
 
 export default function SideScroll() {
   const scrollRef = useRef(null);
+  const ticking = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (scrollRef.current) {
-        const scrollY = window.scrollY;
-        scrollRef.current.style.transform = `translateX(-${scrollY}px)`;
+      if (!ticking.current) {
+        window.requestAnimationFrame(() => {
+          if (scrollRef.current) {
+            const scrollY = window.scrollY;
+            scrollRef.current.style.transform = `translateX(-${scrollY}px)`;
+          }
+          ticking.current = false;
+        });
+        ticking.current = true;
       }
     };
 
