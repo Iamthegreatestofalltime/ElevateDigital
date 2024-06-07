@@ -1,0 +1,34 @@
+.sideScrollContainer {
+  position: relative;
+  width: calc(85vw); /* Subtracting both left and right margins */
+  overflow: hidden;
+  margin-left: 0px;
+  margin-bottom: 100px;
+}
+
+.sideScrollContent {
+  display: flex;
+  will-change: transform;
+  transition: transform 0.08s ease-out;
+}
+
+.scrollImage {
+  width: 400px; /* Adjust the width of each image as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 20px; /* Adjust the spacing between images as needed */
+  border-radius: 10px;
+}
+
+.firstImage {
+  width: 400px; /* Adjust the width of each image as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 20px; /* Adjust the spacing between images as needed */
+  border-radius: 10px;
+  margin-left: 50px;
+}
+
+@media (max-width: 768px) {
+  .sideScrollContainer {
+    margin-top: 100px; /* Adjust this value as needed */
+  }
+}

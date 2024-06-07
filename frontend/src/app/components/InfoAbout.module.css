@@ -1,0 +1,64 @@
+@import url('https://fonts.cdnfonts.com/css/brockmann');
+
+.container {
+  font-family: 'Brockmann', sans-serif;
+}
+
+.hiwWrapper {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.hiwHeading {
+  font-family: 'Brockmann', sans-serif;
+}
+
+.hiwSub {
+  font-size: 1.25rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.hiwColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hiwIconWrapper {
+  margin-bottom: 20px;
+}
+
+.pSmall {
+  font-size: 0.875rem;
+}
+
+.buttonWrapper {
+  text-align: center;
+}
+
+.button {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.mt40 {
+  margin-top: 40px;
+}  
+
+.scrollImage {
+  width: 100%; /* Adjust the width to fit the container */
+  height: auto; /* Maintain aspect ratio */
+  max-width: 300px; /* Limit the maximum width */
+  border-radius: 10px;
+} 

@@ -1,0 +1,25 @@
+.splineContainer {
+    width: 100%;
+    max-width: 660px; /* Maximum width */
+    margin: 0 auto;
+    position: relative;
+    left: -4%;
+  }
+  
+  .desktopSpline {
+    display: block;
+  }
+  
+  .mobileSpline {
+    display: none;
+  }
+  
+  @media (max-width: 768px) {
+    .desktopSpline {
+      display: none;
+    }
+  
+    .mobileSpline {
+      display: none;
+    }
+  }  
