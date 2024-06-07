@@ -65,8 +65,7 @@ export default function FAQ() {
                         font-family: 'Brockmann', sans-serif;
                         padding: 20px 40px; /* Adjusted padding for better spacing */
                         text-align: left;
-                        max-width: 90%;
-                        min-width: 90%;
+                        width: 90%; /* Set width to 90% */
                         margin: 0 auto;
                     }
                     .faq-item {
