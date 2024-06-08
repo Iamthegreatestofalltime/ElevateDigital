@@ -25,9 +25,6 @@ export default function Main() {
           <FadeInUp>
             <Hero />
           </FadeInUp>
-          <div className="block md:hidden">
-            <LaptopSpline/>
-          </div>
           <FadeInUp>
             <SideScroll />
           </FadeInUp>
