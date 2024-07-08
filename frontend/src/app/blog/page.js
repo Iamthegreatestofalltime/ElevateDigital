@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Image from 'next/image';
+import parse from 'html-react-parser';
 
 const generateSlug = (title) => {
   return title
@@ -30,12 +31,20 @@ export default function Blogs() {
   }, []);
 
   const extractTitleAndSnippet = (content) => {
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = content;
-    const h1 = tempDiv.querySelector('h1');
-    const title = h1 ? h1.innerText : 'No Title';
-    const words = tempDiv.innerText.split(' ').slice(0, 25).join(' ') + '...';
-    return { title, snippet: words };
+    const parsedContent = parse(content);
+    let title = 'No Title';
+    let snippet = '';
+
+    parsedContent.forEach(node => {
+      if (node.type === 'tag' && node.name === 'h1') {
+        title = node.children[0].data;
+      }
+    });
+
+    const textContent = parsedContent.map(node => node.data || '').join(' ');
+    snippet = textContent.split(' ').slice(0, 25).join(' ') + '...';
+
+    return { title, snippet };
   };
 
   return (

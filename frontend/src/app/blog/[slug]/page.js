@@ -7,7 +7,15 @@ import styles from './BlogPost.module.css';
 import Footer from '@/app/components/Footer';
 import Header from '@/app/components/Header';
 import Image from 'next/image';
+import parse, { domToReact } from 'html-react-parser';
 import '../../globals.css';
+
+const generateSlug = (title) => {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+};
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -18,23 +26,21 @@ const BlogPost = () => {
   useEffect(() => {
     console.log("useEffect triggered with slug:", slug);
 
-    const generateSlug = (title) => {
-      return title
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-') // Replace non-alphanumeric characters with hyphens
-        .replace(/(^-|-$)/g, ''); // Remove leading or trailing hyphens
-    };
-
     if (slug) {
       console.log(`Fetching blog for slug: ${slug}`);
       axios.get('http://localhost:5100/api/backend')
         .then((response) => {
           console.log("Fetched blogs:", response.data);
           const matchedBlog = response.data.find((b) => {
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = b.content;
-            const h1 = tempDiv.querySelector('h1');
-            const title = h1 ? h1.innerText : 'No Title';
+            const parsedContent = parse(b.content);
+            let title = 'No Title';
+            
+            parsedContent.forEach(node => {
+              if (node.type === 'tag' && node.name === 'h1') {
+                title = domToReact(node.children);
+              }
+            });
+            
             const generatedSlug = generateSlug(title);
             console.log(`Matching slug: ${slug} with generated slug: ${generatedSlug}`);
             return generatedSlug === slug;
@@ -43,24 +49,21 @@ const BlogPost = () => {
             console.log("Matched blog found:", matchedBlog);
             setBlog(matchedBlog);
 
-            // Extract H1 and H2 tags for TOC
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = matchedBlog.content;
-            const headings = tempDiv.querySelectorAll('h1, h2');
-            const tocArray = Array.from(headings).map((heading, index) => {
-              const id = `heading-${index}`;
-              heading.id = id;
-              return {
-                id,
-                text: heading.innerText,
-                level: heading.tagName.toLowerCase(),
-              };
+            const parsedContent = parse(matchedBlog.content);
+            const tocArray = [];
+            parsedContent.forEach((node, index) => {
+              if (node.type === 'tag' && (node.name === 'h1' || node.name === 'h2')) {
+                const id = `heading-${index}`;
+                tocArray.push({
+                  id,
+                  text: domToReact(node.children),
+                  level: node.name,
+                });
+              }
             });
 
             console.log("Generated TOC:", tocArray);
-
             setToc(tocArray);
-            setBlog({ ...matchedBlog, content: tempDiv.innerHTML });
           } else {
             console.log("No matching blog found for slug:", slug);
           }
