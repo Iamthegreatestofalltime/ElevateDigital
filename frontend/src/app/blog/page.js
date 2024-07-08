@@ -57,10 +57,12 @@ export default function Blogs() {
                     <Link href={`/blog/${slug}`}>
                       <div className="p-6 hover:bg-gray-700 transition duration-300 flex flex-col md:flex-row">
                         {blog.imageUrl && (
-                          <img
+                          <Image
                             src={blog.imageUrl}
                             alt={title}
                             className="mb-4 w-full h-auto object-cover md:w-1/3 md:max-h-48 rounded-lg"
+                            width={300}
+                            height={100}
                           />
                         )}
                         <div className="md:ml-6">

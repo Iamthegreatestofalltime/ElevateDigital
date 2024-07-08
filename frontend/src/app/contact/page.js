@@ -14,9 +14,9 @@ export default function ContactPage() {
             <div className="contact-page">
                 <div className="header mt-32">
                     <h1 className="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
-                        Have an app idea?<br />Let's launch it.
+                        Have an app idea?<br />Let&apos;s launch it.
                     </h1>
-                    <p className="text-xl text-gray-300">The first step to developing your software product idea starts with a 30 minute call. It's that easy.</p>
+                    <p className="text-xl text-gray-300">The first step to developing your software product idea starts with a 30 minute call. It&apos;s that easy.</p>
                 </div>
 
                 <div className="calendly-section">
@@ -25,7 +25,7 @@ export default function ContactPage() {
 
                 <div className="contact-section">
                     <h2 className="text-3xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">Contact us</h2>
-                    <p className="text-gray-300 mb-8">Let's get your product designed, built, and scaled how you want it. Tell us more about your project and we'll kick off in no time.</p>
+                    <p className="text-gray-300 mb-8">Let&apos;s get your product designed, built, and scaled how you want it. Tell us more about your project and we&apos;ll kick off in no time.</p>
 
                     <div className="contact-form-container">
                         <form className="contact-form">

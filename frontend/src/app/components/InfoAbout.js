@@ -33,7 +33,7 @@ const BenefitsSection = () => {
     <section ref={sectionRef} className="text-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold mb-2">Your integrated product team</h2>
-        <p className="text-gray-400 mb-12">Software is always changing. That's why we do things different.</p>
+        <p className="text-gray-400 mb-12">Software is always changing. That&apos;s why we do things different.</p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <BenefitCard
