@@ -87,24 +87,13 @@
     margin: 0 0 20px 0; /* Add margin bottom for spacing */
   }
 
-  .splineSection {
-    margin-bottom: 20px; /* Add margin bottom to move the component below it lower */
-    max-width: none; /* Remove the max-width constraint on mobile */
-  }
-
   .heading {
     font-size: 2rem; /* Reduce font size for mobile */
-    margin-bottom: 10px; /* Reduce margin for mobile */
     word-wrap: break-word; /* Break long words if necessary */
   }
 
   .inlineText {
     font-size: 1rem; /* Reduce font size for mobile */
-    margin-bottom: 20px; /* Reduce margin for mobile */
-  }
-
-  .buttonWrapper {
-    margin-bottom: 20px; /* Reduce margin for mobile */
   }
 
   .button {

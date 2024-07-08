@@ -7,6 +7,32 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
+:root {
+  --secondary--color-5: #27a4ff;
+  --secondary--color-6: #3354ff;
+  --secondary--color-7: #7433ff;
+  --secondary--color-8: #f64abb;
+  --secondary--color-9: #ff7c33;
+}
+
+/* In globals.css */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #4a00e0, #8e2de2);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #8e2de2, #4a00e0);
+}
 
 @media (prefers-color-scheme: dark) {
   :root {

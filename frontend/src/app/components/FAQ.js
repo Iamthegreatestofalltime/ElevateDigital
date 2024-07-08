@@ -1,18 +1,28 @@
-"use client";
-
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function FAQ() {
     const [openIndex, setOpenIndex] = useState(null);
 
     const toggleFAQ = (index) => {
-        if (openIndex === index) {
-            setOpenIndex(null);
-        } else {
-            setOpenIndex(index);
-        }
+        setOpenIndex(openIndex === index ? null : index);
     };
+
+    const faqData = [
+        {
+            question: "What services do you offer?",
+            answer: "We offer a wide range of web design services including custom website development, e-commerce solutions, SEO optimization, and more."
+        },
+        {
+            question: "How long does it take to build a website?",
+            answer: "The timeline for building a website depends on the complexity and requirements. Typically, it can take anywhere from 2 to 6 weeks."
+        },
+        {
+            question: "What is the cost of a new website?",
+            answer: "The cost of a new website varies based on the project's scope and features. Our basic packages start at 250 USD."
+        }
+    ];
 
     return (
         <>
@@ -20,91 +30,83 @@ export default function FAQ() {
                 <link href="https://fonts.cdnfonts.com/css/brockmann" rel="stylesheet" />
             </Head>
             <div className="faq-container">
-                <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
-                <div className="faq-item mb-1">
-                    <button
-                        className="faq-question text-xl font-semibold mb-2"
-                        onClick={() => toggleFAQ(0)}
-                    >
-                        What services do you offer?
-                    </button>
-                    {openIndex === 0 && (
-                        <p className="faq-answer mb-4">
-                            We offer a wide range of web design services including custom website development, e-commerce solutions, SEO optimization, and more.
-                        </p>
-                    )}
-                </div>
-                <div className="faq-item mb-1">
-                    <button
-                        className="faq-question text-xl font-semibold mb-2"
-                        onClick={() => toggleFAQ(1)}
-                    >
-                        How long does it take to build a website?
-                    </button>
-                    {openIndex === 1 && (
-                        <p className="faq-answer mb-4">
-                            The timeline for building a website depends on the complexity and requirements. Typically, it can take anywhere from 2 to 6 weeks.
-                        </p>
-                    )}
-                </div>
-                <div className="faq-item mb-1">
-                    <button
-                        className="faq-question text-xl font-semibold mb-2"
-                        onClick={() => toggleFAQ(2)}
-                    >
-                        What is the cost of a new website?
-                    </button>
-                    {openIndex === 2 && (
-                        <p className="faq-answer mb-4">
-                            The cost of a new website varies based on the project&apos;s scope and features. Our basic packages start at 250 USD.
-                        </p>
-                    )}
-                </div>
-                <style jsx>{`
-                    .faq-container {
-                        font-family: 'Brockmann', sans-serif;
-                        padding: 20px 40px; /* Adjusted padding for better spacing */
-                        text-align: left;
-                        width: 90%; /* Set width to 90% */
-                        margin: 0 auto;
-                    }
-                    .faq-item {
-                        margin-bottom: 20px;
-                        padding: 10px; /* Added padding for better spacing */
-                        background-color: rgba(0, 0, 0, 0.05); /* Dark tint with 95% transparency */
-                        border-radius: 10px;
-                        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Shadow to the bottom and right */
-                    }
-                    .faq-question {
-                        color: #333;
-                        background: none;
-                        border: none;
-                        text-align: left;
-                        width: 100%;
-                        padding: 10px; /* Added padding for better spacing */
-                        cursor: pointer;
-                        transition: color 0.3s;
-                    }
-                    .faq-question:hover {
-                        color: #F4CF86;
-                    }
-                    .faq-answer {
-                        color: #555;
-                        padding: 10px; /* Added padding for better spacing */
-                    }
-                    @media (max-width: 768px) {
-                        .faq-container {
-                            padding: 10px 20px; /* Adjusted padding for mobile */
-                        }
-                        .faq-question {
-                            font-size: 1rem; /* Adjusted font size for mobile */
-                        }
-                        .faq-answer {
-                            font-size: 0.875rem; /* Adjusted font size for mobile */
-                        }
-                    }
-                `}</style>
+                <h2 className="text-4xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+                    Frequently Asked Questions
+                </h2>
+                {faqData.map((faq, index) => (
+                    <div key={index} className={`faq-item ${openIndex === index ? 'open' : ''}`}>
+                        <button
+                            className="faq-question"
+                            onClick={() => toggleFAQ(index)}
+                        >
+                            <span>{faq.question}</span>
+                            {openIndex === index ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
+                        </button>
+                        <div className="faq-answer">
+                            <p>{faq.answer}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
+            <style jsx>{`
+                .faq-container {
+                    font-family: 'Brockmann', sans-serif;
+                    max-width: 800px;
+                    margin: 0 auto;
+                    padding: 40px 20px;
+                }
+                .faq-item {
+                    margin-bottom: 20px;
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 15px;
+                    overflow: hidden;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                }
+                .faq-item:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                }
+                .faq-question {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                    padding: 20px;
+                    background: none;
+                    border: none;
+                    text-align: left;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    color: #e0e0e0;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+                .faq-question:hover {
+                    color: #64ffda;
+                }
+                .faq-answer {
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: all 0.3s ease;
+                }
+                .faq-item.open .faq-answer {
+                    max-height: 1000px;
+                    padding: 0 20px 20px;
+                }
+                .faq-answer p {
+                    color: #b0b0b0;
+                    line-height: 1.6;
+                }
+                @media (max-width: 768px) {
+                    .faq-question {
+                        font-size: 1rem;
+                    }
+                    .faq-answer p {
+                        font-size: 0.9rem;
+                    }
+                }
+            `}</style>
         </>
     );
 }

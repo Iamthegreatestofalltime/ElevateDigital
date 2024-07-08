@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useRef } from 'react';
+
+import { useEffect, useRef, useState } from 'react';
 import styles from './SideScroll.module.css';
 import Image from 'next/image';
 import RealEstateDesign from '../../../public/RealEstateDesign.png';
@@ -9,19 +10,46 @@ import Food from '../../../public/Food.png';
 
 export default function SideScroll() {
   const scrollRef = useRef(null);
-  const ticking = useRef(false);
+  const containerRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [scrollStart, setScrollStart] = useState(0);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          setScrollStart(window.scrollY);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 } // Reduced threshold to detect earlier
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!ticking.current) {
-        window.requestAnimationFrame(() => {
-          if (scrollRef.current) {
-            const scrollY = window.scrollY;
-            scrollRef.current.style.transform = `translateX(-${scrollY}px)`;
-          }
-          ticking.current = false;
-        });
-        ticking.current = true;
+      if (!isVisible) return;
+
+      const currentScroll = window.scrollY;
+      const scrollDelta = currentScroll - scrollStart;
+      
+      // Reduced threshold to start scrolling earlier
+      const scrollThreshold = window.innerHeight * 0.5; // 50% of viewport height
+
+      if (scrollDelta > 0 && scrollRef.current) {
+        const translateX = (scrollDelta / (document.documentElement.scrollHeight - window.innerHeight)) * scrollRef.current.scrollWidth;
+        scrollRef.current.style.transform = `translateX(-${translateX}px)`;
       }
     };
 
@@ -29,10 +57,10 @@ export default function SideScroll() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [isVisible, scrollStart]);
 
   return (
-    <div className={styles.sideScrollContainer}>
+    <div className={styles.sideScrollContainer} ref={containerRef}>
       <div className={styles.sideScrollContent} ref={scrollRef}>
         <Image src={RealEstateDesign} alt="Image 1" className={styles.firstImage} width={400} height={400}/>
         <Image src={Construction} alt="Image 2" className={styles.scrollImage} width={400} height={400}/>
