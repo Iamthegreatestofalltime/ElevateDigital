@@ -1,9 +1,16 @@
 from openai import OpenAI
 import sys
+from dotenv import load_dotenv
+import os
 
-client = OpenAI(
-    api_key='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'
-)
+# Load environment variables from .env file
+load_dotenv()
+
+# Get the API key from environment variable
+api_key = os.getenv('OPENAI_API_KEY')
+
+# Initialize the OpenAI client with the API key
+client = OpenAI(api_key=api_key)
 
 def get_openai_response(prompt):
     messages = [
